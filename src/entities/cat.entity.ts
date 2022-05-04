@@ -1,5 +1,7 @@
+
 export class Cat {
-    id: number;
+    _id: String;
     nom: String;
     race: String;
 }
+

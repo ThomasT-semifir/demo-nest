@@ -26,8 +26,8 @@ export class CatsController {
     }
 
     @Get(":id")
-    findById(@Param("id") id: number):Cat[]{
-        return this.catsService.findById(+id)
+    findById(@Param("id") id: string):Cat[]{
+        return this.catsService.findById(id)
     }
     
     @Get("nom/:nom")
