@@ -16,22 +16,20 @@ export class CatsService {
         return createdCat.save();
     }
 
-    findAll(): Cat[]{
-        return cats;
+    async findAll(): Promise<Cat[]>{
+        return await this.catModel.find();
     }
 
-    findById(idCat: String){
+    async findById(idCat: String): Promise<Cat>{
         // console.log(typeof idCat, typeof cats[0].id)
-        let elem = cats.filter((cat) => cat._id === idCat)
-        return elem
+        return await this.catModel.findById(idCat);
     }
 
     findByNom(nom: string){
         return cats.filter((cat) => cat.nom === nom)
     }
 
-    delete(cat: Cat){
-        cats.splice(cats.indexOf(cat))
-        return cats
+    async delete(id: string){
+        return await this.catModel.findByIdAndRemove(id)
     }
 }

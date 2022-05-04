@@ -10,8 +10,8 @@ export class CatsController {
     constructor(private readonly catsService: CatsService){}
 
     @Get()
-    findAll() : Cat[]{
-        return this.catsService.findAll()
+    findAll() : Promise<Cat[]>{
+        return this.catsService.findAll();
     }
 
     @Post()
@@ -26,8 +26,8 @@ export class CatsController {
     }
 
     @Get(":id")
-    findById(@Param("id") id: string):Cat[]{
-        return this.catsService.findById(id)
+    async findById(@Param("id") id: string): Promise<Cat>{
+        return await this.catsService.findById(id)
     }
     
     @Get("nom/:nom")
@@ -35,8 +35,8 @@ export class CatsController {
         return this.catsService.findByNom(nom)
     }
 
-    @Delete()
-    deleteCat(@Body() cat: Cat){
-        return this.catsService.delete(cat)
+    @Delete(":id")
+    deleteCat(@Param("id") id :string){
+        return this.catsService.delete(id);
     }
 }
