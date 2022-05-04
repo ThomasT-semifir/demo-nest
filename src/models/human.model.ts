@@ -17,7 +17,7 @@ export class Human {
     @Prop()
     age: number;
     @Prop({type: SchemaTypes.ObjectId, ref: Cat.name})
-    chats : Cat[];
+    chats : Cat;
 
 }
 
